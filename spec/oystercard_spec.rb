@@ -23,7 +23,7 @@ describe Oystercard do
    expect(oystercard).to respond_to(:deduct).with(1).argument
   end
 
-  it 'has not started the journey' do
+  it 'is not in a journey' do
    expect(oystercard).to respond_to(:in_journey?)
   end
 
@@ -32,6 +32,10 @@ describe Oystercard do
   end
 
   it 'has ended the journey' do
-   expect(oystercard).to respond_to(:touch_out)
+    expect(oystercard).to respond_to(:touch_out)
+  end
+
+  it 'raises an error if balance is less than 1' do
+   expect{ oystercard.touch_in }.to raise_error 'Insufficient balance'
   end
 end
