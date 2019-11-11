@@ -22,4 +22,16 @@ describe Oystercard do
   it 'can deduct from the balance' do
    expect(oystercard).to respond_to(:deduct).with(1).argument
   end
+
+  it 'has not started the journey' do
+   expect(oystercard).to respond_to(:in_journey?)
+  end
+
+  it 'has started the journey' do
+    expect(oystercard).to respond_to(:touch_in)
+  end
+
+  it 'has ended the journey' do
+   expect(oystercard).to respond_to(:touch_out)
+  end
 end
